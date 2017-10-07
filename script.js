@@ -3,16 +3,24 @@ $(function(){
 	var playCarousel = setInterval(nextSlide, 4000);
 
 	function nextSlide(){
+		if (carouselList.is(':animated')) {
+			nextSlide();
+		} else {
 		carouselList.animate({'marginLeft':-400}, 500, moveFirstSlide);
 		clearInterval(playCarousel);
 		playCarousel = setInterval(nextSlide, 4000);
+		};
 	};
 
 	function backSlide(){
-		moveLastSlide(); //przesuwanie obrazka na poczatek listy
-		carouselList.animate({'marginLeft':0}, 500); //zmiana marginesu z -400 na 0
-		clearInterval(playCarousel); // resetowanie timera interwalu
-		playCarousel = setInterval(nextSlide, 4000); //resetowanie timer cd.
+		if (carouselList.is(':animated')) {
+			backSlide();
+		} else {
+			moveLastSlide(); //przesuwanie obrazka na poczatek listy
+			carouselList.animate({'marginLeft':0}, 500); //zmiana marginesu z -400 na 0
+			clearInterval(playCarousel); // resetowanie timera interwalu
+			playCarousel = setInterval(nextSlide, 4000); //resetowanie timer cd.
+		};
 	};
 
 	function moveFirstSlide(){
