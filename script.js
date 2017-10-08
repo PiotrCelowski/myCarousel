@@ -88,26 +88,9 @@ $(function(){
 			//currentIndx = parseInt( )
 
 		var positionDiff = $(this).index() - activePhoto;
-
-		switch (Math.abs(positionDiff)) {
-			case 0:
-
-				break;
-			case 1:
-				checkDiff(positionDiff);
-				break;
-			case 2:
-				checkDiff(positionDiff);
-				break;
-			case 3:
-				checkDiff(positionDiff);
-				break;
-			case 4:
-				checkDiff(positionDiff);
-				break;
-			case 5:
-				checkDiff(positionDiff);
-				break;
+		
+		if (Math.abs(positionDiff) > 0) {
+			checkDiff(positionDiff);
 		};
 		
 		function checkDiff(diff) {
